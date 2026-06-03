@@ -78,7 +78,7 @@ export function ChatPanel() {
   return (
     <div className="flex h-full flex-col">
       {/* Chat Header */}
-      <div className="flex items-center gap-3 border-b-2 border-[#001f52] bg-[#003380] px-5 py-3">
+      <div className="flex shrink-0 items-center gap-3 border-b-2 border-[#001f52] bg-[#003380] px-5 py-3">
         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#FFCC00] text-xl">
           <Bot className="h-5 w-5 text-[#001f52]" />
         </div>
@@ -90,7 +90,7 @@ export function ChatPanel() {
       </div>
 
       {/* Demo Notice */}
-      <div className="mx-4 mt-3 rounded-lg border border-dashed border-[#c9a000] bg-[#fff8dc] px-4 py-2 text-sm text-[#7a5900]">
+      <div className="mx-4 mt-3 shrink-0 rounded-lg border border-dashed border-[#c9a000] bg-[#fff8dc] px-4 py-2 text-sm text-[#7a5900]">
         <strong>Modo demostración:</strong> UNamigo está en construcción. El módulo RAG será integrado con los
         documentos oficiales de la UNAL en la próxima fase.
       </div>
@@ -155,8 +155,8 @@ export function ChatPanel() {
         </div>
       </ScrollArea>
 
-      {/* Input Area */}
-      <div className="border-t-2 border-[#dde3ef] bg-white p-4">
+      {/* Input Area - Siempre visible (fijo en la parte inferior) */}
+      <div className="shrink-0 border-t-2 border-[#dde3ef] bg-white p-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
         <div className="flex gap-3">
           <Input
             value={input}

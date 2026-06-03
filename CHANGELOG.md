@@ -18,6 +18,25 @@ y este proyecto adhiere a [Versionado Semantico](https://semver.org/lang/es/).
 
 ---
 
+## [0.1.1-beta] - 2026-06-03
+
+### Corregido
+
+**ChatPanel - Input siempre visible**
+- El campo de entrada de mensajes ahora permanece fijo en la parte inferior del panel
+- Solucionado mediante layout flexbox con `shrink-0` en elementos fijos:
+  - Header del chat: `shrink-0` evita compresion
+  - Aviso de demo: `shrink-0` evita compresion  
+  - Area de mensajes: `flex-1` toma espacio restante con scroll
+  - Input area: `shrink-0` siempre visible sin importar cantidad de mensajes
+- Agregada sombra superior al input (`shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]`) para separacion visual
+
+### Documentacion
+- Actualizado `docs/COMPONENTES.md` con diagrama de estructura de layout del ChatPanel
+- Documentadas clases CSS clave para mantener el input fijo
+
+---
+
 ## [0.1.0-beta] - 2026-06-03
 
 ### Resumen

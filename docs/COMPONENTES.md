@@ -102,6 +102,35 @@ export default function Page() {
 - **TypingIndicator**: Indicador de "escribiendo..." con puntos animados
 - **SuggestionChips**: Chips de sugerencias rapidas
 
+### Estructura de Layout
+
+El componente utiliza un layout flexbox optimizado para mantener el input siempre visible:
+
+```
+┌─────────────────────────────────────┐
+│  Chat Header (shrink-0)             │  ← No se comprime
+├─────────────────────────────────────┤
+│  Demo Notice (shrink-0)             │  ← No se comprime
+├─────────────────────────────────────┤
+│                                     │
+│  Messages ScrollArea (flex-1)       │  ← Toma espacio restante
+│  - overflow-y: auto                 │
+│  - auto-scroll al final             │
+│                                     │
+├─────────────────────────────────────┤
+│  Input Area (shrink-0)              │  ← Siempre visible, no se comprime
+│  - Campo de texto                   │
+│  - Boton enviar                     │
+│  - Chips de sugerencias             │
+│  - shadow-top para separacion       │
+└─────────────────────────────────────┘
+```
+
+**Clases clave para input fijo:**
+- `shrink-0`: Evita que el elemento se comprima en el contenedor flex
+- `shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]`: Sombra superior para separacion visual
+- `border-t-2`: Borde superior para demarcar la zona de input
+
 ---
 
 ## RecursosPanel

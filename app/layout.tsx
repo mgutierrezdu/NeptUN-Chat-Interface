@@ -1,11 +1,27 @@
 import { Analytics } from '@vercel/analytics/next'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
+import { Lora, Inter } from 'next/font/google'
+import { TooltipProvider } from '@/components/ui/tooltip'
 import './globals.css'
 
+const lora = Lora({ 
+  subsets: ['latin'],
+  variable: '--font-serif',
+  display: 'swap',
+})
+
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'UNamigo - UNAL Sede Medellín',
+  description: 'Asistente virtual de la Universidad Nacional de Colombia, Sede Medellín. Información académica, recursos y comunidad estudiantil.',
   generator: 'v0.app',
+  keywords: ['UNAL', 'Universidad Nacional', 'Medellín', 'asistente', 'estudiantes', 'académico'],
+  authors: [{ name: 'UNamigo' }],
   icons: {
     icon: [
       {
@@ -25,15 +41,25 @@ export const metadata: Metadata = {
   },
 }
 
+export const viewport: Viewport = {
+  themeColor: '#003380',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className="font-sans antialiased">
-        {children}
+    <html lang="es" className={`${lora.variable} ${inter.variable} bg-[#f4f6fb]`}>
+      <body className="font-serif antialiased">
+        <TooltipProvider>
+          {children}
+        </TooltipProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

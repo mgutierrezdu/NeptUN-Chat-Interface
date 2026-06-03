@@ -1,152 +1,240 @@
-# Changelog - UNamigo
+# Historial de Cambios - UNamigo
 
-Registro de cambios técnicos del proyecto UNamigo.
+Todos los cambios notables de este proyecto se documentan en este archivo.
 
----
-
-## [1.0.0] - 2026-06-03
-
-### Migración de HTML a Next.js 16
-
-**Tipo de cambio:** Migración completa de arquitectura
+El formato esta basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/),
+y este proyecto adhiere a [Versionado Semantico](https://semver.org/lang/es/).
 
 ---
 
-### Dependencias Instaladas
+## [Sin Publicar]
 
-| Paquete | Propósito |
-|---------|-----------|
-| `framer-motion` | Animaciones y transiciones de UI |
-| `@radix-ui/react-tabs` | Componente Tabs accesible |
-| `@radix-ui/react-avatar` | Imágenes de perfil |
-| `@radix-ui/react-scroll-area` | Scroll personalizado |
-| `@radix-ui/react-tooltip` | Tooltips accesibles |
-
----
-
-### Archivos Creados
-
-```
-lib/data.ts                    (131 líneas)
-├── Interface: Recurso { id, titulo, descripcion, icon, categoria, url }
-├── Interface: FechaCalendario { fecha, evento, tipo }
-├── Interface: Publicacion { id, autor, avatar, categoria, contenido, likes, tiempo }
-├── Const: recursos[] → 6 servicios UNAL
-├── Const: calendarioAcademico[] → 5 fechas importantes
-├── Const: publicaciones[] → 4 posts de ejemplo
-└── Const: sugerenciasRapidas[] → 6 prompts para el chat
-
-components/unal-shield.tsx     (42 líneas)
-└── SVG Component: Escudo UNAL vectorizado con colores oficiales
-
-components/chat-panel.tsx      (195 líneas)
-├── State: messages[] → Array de mensajes con rol (user|assistant)
-├── State: isTyping → Indicador de respuesta en progreso
-├── Feature: AnimatePresence para entrada/salida de mensajes
-├── Feature: Typing indicator con keyframes CSS
-├── Feature: Quick suggestions chips clickeables
-└── Feature: Auto-scroll con useRef
-
-components/recursos-panel.tsx  (114 líneas)
-├── State: categoriaActiva → Filtro de recursos
-├── Section: Calendario académico con badges por tipo
-├── Section: Grid de recursos filtrable
-└── Feature: Links externos a servicios UNAL
-
-components/mural-panel.tsx     (230 líneas)
-├── State: publicaciones[] → Posts con CRUD local
-├── State: filtro → Categoría activa
-├── State: nuevoPost → Form state para nueva publicación
-├── Feature: Sistema de likes con toggle
-├── Feature: Filtros por categoría
-├── Feature: Formulario de nueva publicación
-└── Feature: Stagger animation en lista de posts
-```
+### Por Hacer
+- Integracion con API de IA (Vercel AI Gateway)
+- Autenticacion con Better Auth + Neon
+- Persistencia de datos con Drizzle ORM
+- Notificaciones push (PWA)
+- Modo offline
 
 ---
 
-### Archivos Modificados
+## [0.1.0-beta] - 2026-06-03
 
-```
-app/page.tsx                   (81 líneas)
-├── Layout: Header con shield + branding + badges
-├── Component: Tabs con 3 paneles (Chat, Recursos, Mural)
-└── Responsive: Mobile-first con max-w-md container
-
-app/layout.tsx                 (68 líneas)
-├── Metadata: title, description, keywords SEO
-├── Viewport: theme-color #003380, user-scalable=no
-└── Font: Inter variable con CSS custom properties
-```
+### Resumen
+Primera version beta de UNamigo. Migracion completa desde prototipo HTML estatico
+a aplicacion React/Next.js moderna con arquitectura modular.
 
 ---
 
-### Paleta de Colores (CSS Tokens)
+### Agregado
 
-| Token | Valor | Uso |
-|-------|-------|-----|
-| `--unal-blue` | `#003380` | Azul institucional UNAL |
-| `--unal-gold` | `#FFCC00` | Dorado/Amarillo UNAL |
-| `--background` | `#f8fafc` | Fondo general (slate-50) |
-| `--foreground` | `#0f172a` | Texto principal (slate-900) |
-| `--muted` | `#64748b` | Texto secundario (slate-500) |
+#### Infraestructura
+- Proyecto Next.js 16 con App Router
+- TypeScript 5.7.3 con configuracion estricta
+- Tailwind CSS v4 con tokens de diseno personalizados
+- shadcn/ui como sistema de componentes base
+- Framer Motion para animaciones
 
----
+#### Componentes Principales
 
-### Arquitectura
+**ChatPanel** (`components/chat-panel.tsx`)
+- Interfaz de chat con mensajes de usuario y asistente
+- Indicador de escritura animado con puntos pulsantes
+- Chips de sugerencias rapidas clickeables
+- Auto-scroll al recibir nuevos mensajes
+- Respuestas simuladas con delay de 1.5 segundos
+- Aviso de modo demo para usuarios
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                      app/layout.tsx                     │
-│  (Inter font, metadata, viewport, global styles)        │
-└─────────────────────────┬───────────────────────────────┘
-                          │
-┌─────────────────────────▼───────────────────────────────┐
-│                      app/page.tsx                       │
-│  ┌─────────────────────────────────────────────────┐   │
-│  │  Header: UNALShield + "UNamigo" + Badges        │   │
-│  └─────────────────────────────────────────────────┘   │
-│  ┌─────────────────────────────────────────────────┐   │
-│  │  Tabs (shadcn/ui)                               │   │
-│  │  ├── TabsTrigger: Chat | Recursos | Mural      │   │
-│  │  └── TabsContent:                               │   │
-│  │      ├── <ChatPanel />                          │   │
-│  │      ├── <RecursosPanel />                      │   │
-│  │      └── <MuralPanel />                         │   │
-│  └─────────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────┘
+**RecursosPanel** (`components/recursos-panel.tsx`)
+- Calendario academico con fechas del semestre 2026-1
+- Badges de tipo para fechas (importante, academico, receso)
+- Grid de recursos filtrable por categoria
+- Enlaces a servicios UNAL: SIA, SIBU, Bienestar, correo, Hermes
+
+**MuralPanel** (`components/mural-panel.tsx`)
+- Feed de publicaciones estilo red social
+- Sistema de likes con estado optimista
+- Filtros por categoria (eventos, academico, bienestar, general)
+- Formulario para crear nuevas publicaciones
+- Animaciones stagger en lista de posts
+- Avatares con fallback de iniciales
+
+**UNALShield** (`components/unal-shield.tsx`)
+- Escudo de la Universidad Nacional en SVG vectorizado
+- Colores oficiales institucionales
+- Props configurables para tamano
+
+#### Datos y Tipos
+
+**lib/data.ts**
+```typescript
+// Interfaces definidas
+interface Recurso {
+  id: string
+  titulo: string
+  descripcion: string
+  icon: string
+  categoria: "academico" | "biblioteca" | "bienestar" | "tecnologia"
+  url: string
+}
+
+interface FechaCalendario {
+  fecha: string
+  evento: string
+  tipo: "importante" | "academico" | "receso"
+}
+
+interface Publicacion {
+  id: string
+  autor: string
+  avatar: string
+  categoria: "evento" | "academico" | "bienestar" | "general"
+  contenido: string
+  likes: number
+  liked: boolean
+  tiempo: string
+}
+
+// Datos de ejemplo incluidos
+- 6 recursos institucionales
+- 5 fechas del calendario academico
+- 4 publicaciones de ejemplo
+- 6 sugerencias rapidas para el chat
 ```
 
+#### Componentes UI (shadcn/ui)
+- `avatar.tsx` - Imagenes de perfil con fallback
+- `badge.tsx` - Etiquetas de estado
+- `button.tsx` - Botones con variantes
+- `card.tsx` - Contenedores con sombra
+- `input.tsx` - Campos de texto
+- `scroll-area.tsx` - Areas con scroll personalizado
+- `tabs.tsx` - Navegacion por pestanas
+- `textarea.tsx` - Areas de texto multilinea
+- `tooltip.tsx` - Tooltips accesibles
+
+#### Documentacion
+- `README.md` - Documentacion principal del proyecto
+- `CHANGELOG.md` - Historial de cambios (este archivo)
+- `docs/ARQUITECTURA.md` - Documentacion tecnica de arquitectura
+- `docs/COMPONENTES.md` - API de componentes
+- `docs/CONTRIBUIR.md` - Guia de contribucion
+
 ---
 
-### Flujo de Datos
+### Detalles Tecnicos
+
+#### Dependencias Instaladas
+
+| Paquete | Version | Proposito |
+|---------|---------|-----------|
+| `next` | 16.2.6 | Framework React con SSR |
+| `react` | 19.x | Biblioteca UI |
+| `typescript` | 5.7.3 | Tipado estatico |
+| `tailwindcss` | 4.2.0 | Framework CSS utility-first |
+| `framer-motion` | 12.40.0 | Animaciones declarativas |
+| `lucide-react` | 1.16.0 | Iconos SVG |
+| `class-variance-authority` | 0.7.1 | Variantes de componentes |
+| `clsx` | 2.1.1 | Condicionales de clases |
+| `tailwind-merge` | 3.3.1 | Merge inteligente de clases |
+
+#### Arquitectura de Archivos
 
 ```
-lib/data.ts ──export──▶ components/*.tsx ──import──▶ app/page.tsx
-     │
-     └── Tipos TypeScript + datos estáticos de demostración
+unamigo/
+├── app/
+│   ├── globals.css          # Estilos globales + tokens
+│   ├── layout.tsx           # Layout raiz + metadata
+│   └── page.tsx             # Pagina principal + tabs
+│
+├── components/
+│   ├── ui/                  # Componentes shadcn/ui (9 archivos)
+│   ├── chat-panel.tsx       # Panel de chat (195 lineas)
+│   ├── mural-panel.tsx      # Mural comunitario (230 lineas)
+│   ├── recursos-panel.tsx   # Panel de recursos (114 lineas)
+│   └── unal-shield.tsx      # Escudo SVG (42 lineas)
+│
+├── lib/
+│   ├── data.ts              # Datos y tipos (131 lineas)
+│   └── utils.ts             # Utilidades (cn helper)
+│
+├── docs/
+│   ├── ARQUITECTURA.md      # Documentacion de arquitectura
+│   ├── COMPONENTES.md       # API de componentes
+│   └── CONTRIBUIR.md        # Guia de contribucion
+│
+├── public/                  # Assets estaticos
+├── CHANGELOG.md             # Este archivo
+└── README.md                # Documentacion principal
 ```
 
+#### Paleta de Colores
+
+| Token | Valor Hex | HSL | Uso |
+|-------|-----------|-----|-----|
+| `--unal-blue` | `#003380` | `220 100% 25%` | Color primario institucional |
+| `--unal-gold` | `#FFCC00` | `48 100% 50%` | Color de acento |
+| `--background` | `#f8fafc` | `210 40% 98%` | Fondo de aplicacion |
+| `--foreground` | `#0f172a` | `222 84% 5%` | Texto principal |
+| `--muted` | `#64748b` | `215 16% 47%` | Texto secundario |
+
+#### Patrones de Diseno Implementados
+
+| Patron | Ubicacion | Descripcion |
+|--------|-----------|-------------|
+| Client Components | Todos los paneles | `"use client"` para interactividad |
+| Compound Components | Tabs | Pattern de Radix UI |
+| Controlled Inputs | Formularios | Estado con useState |
+| Optimistic UI | Likes | Actualizacion inmediata sin esperar servidor |
+| Stagger Animation | Listas | Delay incremental por indice |
+| Auto-scroll | Chat | useRef + useEffect para scroll automatico |
+
+#### Metricas de Codigo
+
+| Metrica | Valor |
+|---------|-------|
+| Total de archivos creados | 15 |
+| Lineas de codigo (aprox.) | 1,200+ |
+| Componentes React | 13 |
+| Interfaces TypeScript | 4 |
+| Tiempo de migracion | ~30 minutos |
+
 ---
 
-### Patterns Utilizados
+### Migracion desde HTML
 
-| Pattern | Descripción |
-|---------|-------------|
-| Client Components | `"use client"` para interactividad |
-| Compound Components | Tabs con Trigger/Content pattern |
-| Controlled Inputs | useState para forms |
-| Optimistic UI | Likes actualizan inmediatamente |
-| Stagger Animations | delay basado en index para listas |
-| Mobile-First | Container max-w-md, touch targets 44px+ |
+#### Antes (Prototipo HTML)
+- 1 archivo HTML de 623 lineas
+- JavaScript inline con datos hardcoded
+- CSS embebido con estilos duplicados
+- Sin tipado ni modularidad
+- Dificil de mantener y escalar
+
+#### Despues (Next.js App)
+- Arquitectura modular con separacion de concerns
+- Datos centralizados y tipados en `lib/data.ts`
+- Componentes reutilizables con props definidas
+- Estilos consistentes via Tailwind tokens
+- Documentacion completa
+- Listo para agregar backend y autenticacion
 
 ---
 
-### Notas de Migración
+### Notas de la Version
 
-La migración convierte un HTML monolítico de 623 líneas en una arquitectura modular con separación de concerns:
-- **Datos** en `lib/`
-- **Componentes reutilizables** en `components/`
-- **Composición** en `app/`
+Esta es una version beta con las siguientes limitaciones:
+- El chat usa respuestas simuladas (sin IA real)
+- Los datos son estaticos (sin persistencia)
+- No hay autenticacion de usuarios
+- El mural no persiste publicaciones entre sesiones
 
-El estado es local (`useState`) para demostración, pero está estructurado para migrar fácilmente a una base de datos con Server Actions.
+Estas limitaciones se abordaran en las proximas versiones con la integracion
+de Vercel AI Gateway, Neon Postgres y Better Auth.
+
+---
+
+## Enlaces
+
+- [Repositorio](https://github.com/mgutierrezdu/v0-unamigo-chat-interface)
+- [Demo en Vivo](https://v0.app/chat/projects/prj_ABreVnped1mWeoAXIdSLUe7GfSCy)
+- [Reportar Bug](https://github.com/mgutierrezdu/v0-unamigo-chat-interface/issues)

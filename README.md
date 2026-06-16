@@ -206,6 +206,6 @@ Link del Proyecto: [https://github.com/mgutierrezdu/NeptUN-Chat-Interface](https
 
 Hecho con el corazon para la comunidad UNAL
 
-**Universidad Nacional de Colombia** · Sede Bogota
+**Universidad Nacional de Colombia** · Sede Medellín
 
 </div>

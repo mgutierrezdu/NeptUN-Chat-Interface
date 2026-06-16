@@ -10,7 +10,7 @@
 
 **Asistente virtual inteligente para estudiantes de la Universidad Nacional de Colombia**
 
-[Demo en Vivo](https://https://neptun-chat-interface.vercel.app/) · [Reportar Bug](https://github.com/mgutierrezdu/v0-unamigo-chat-interface/issues) · [Solicitar Feature](https://github.com/mgutierrezdu/v0-unamigo-chat-interface/issues)
+[Demo en Vivo](https://neptun-chat-interface.vercel.app/) · [Reportar Bug](https://github.com/mgutierrezdu/v0-unamigo-chat-interface/issues) · [Solicitar Feature](https://github.com/mgutierrezdu/v0-unamigo-chat-interface/issues)
 
 </div>
 

@@ -10,7 +10,7 @@
 
 **Asistente virtual inteligente para estudiantes de la Universidad Nacional de Colombia**
 
-[Demo en Vivo](https://neptun-chat-interface.vercel.app/) · [Reportar Bug](https://github.com/mgutierrezdu/v0-unamigo-chat-interface/issues) · [Solicitar Feature](https://github.com/mgutierrezdu/v0-unamigo-chat-interface/issues)
+[Demo en Vivo](https://neptun-chat-interface.vercel.app/) · [Reportar Bug](https://github.com/mgutierrezdu/NeptUN-Chat-Interface/issues) · [Solicitar Feature](https://github.com/mgutierrezdu/NeptUN-Chat-Interface/issues)
 
 </div>
 
@@ -74,10 +74,10 @@ NeptUN es una aplicacion web progresiva (PWA) disenada para asistir a estudiante
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/mgutierrezdu/v0-unamigo-chat-interface.git
+git clone https://github.com/mgutierrezdu/NeptUN-Chat-Interface.git
 
 # 2. Navegar al directorio
-cd v0-unamigo-chat-interface
+cd NeptUN-Chat-Interface
 
 # 3. Instalar dependencias
 pnpm install
@@ -102,7 +102,7 @@ La aplicacion estara disponible en [http://localhost:3000](http://localhost:3000
 ## Estructura del Proyecto
 
 ```
-unamigo/
+neptun/
 ├── app/                          # App Router de Next.js
 │   ├── globals.css               # Estilos globales y tokens CSS
 │   ├── layout.tsx                # Layout raiz con metadata
@@ -164,14 +164,6 @@ NeptUN utiliza una paleta sobria y elegante inspirada en el azul noche de Neptun
 
 ---
 
-## Desarrollo con v0
-
-Este repositorio esta vinculado a un proyecto de [v0](https://v0.app). Puedes continuar el desarrollo visitando el enlace de abajo. Cada merge a `main` se despliega automaticamente.
-
-[Continuar trabajando en v0](https://v0.app/chat/projects/prj_ABreVnped1mWeoAXIdSLUe7GfSCy)
-
----
-
 ## Roadmap
 
 - [ ] Integracion con API de IA (OpenAI/Anthropic)
@@ -206,7 +198,7 @@ Distribuido bajo la Licencia MIT. Ver `LICENSE` para mas informacion.
 
 **Proyecto NeptUN** - Universidad Nacional de Colombia
 
-Link del Proyecto: [https://github.com/mgutierrezdu/v0-unamigo-chat-interface](https://github.com/mgutierrezdu/v0-unamigo-chat-interface)
+Link del Proyecto: [https://github.com/mgutierrezdu/NeptUN-Chat-Interface](https://github.com/mgutierrezdu/NeptUN-Chat-Interface)
 
 ---
 

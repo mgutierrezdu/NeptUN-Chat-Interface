@@ -1,4 +1,4 @@
-# Historial de Cambios - UNamigo
+# Historial de Cambios - NeptUN
 
 Todos los cambios notables de este proyecto se documentan en este archivo.
 
@@ -40,7 +40,7 @@ y este proyecto adhiere a [Versionado Semantico](https://semver.org/lang/es/).
 ## [0.1.0-beta] - 2026-06-03
 
 ### Resumen
-Primera version beta de UNamigo. Migracion completa desde prototipo HTML estatico
+Primera version beta de NeptUN. Migracion completa desde prototipo HTML estatico
 a aplicacion React/Next.js moderna con arquitectura modular.
 
 ---
@@ -78,7 +78,7 @@ a aplicacion React/Next.js moderna con arquitectura modular.
 - Animaciones stagger en lista de posts
 - Avatares con fallback de iniciales
 
-**UNALShield** (`components/unal-shield.tsx`)
+**NeptUNLogo** (`components/neptun-logo.tsx`)
 - Escudo de la Universidad Nacional en SVG vectorizado
 - Colores oficiales institucionales
 - Props configurables para tamano
@@ -171,7 +171,7 @@ unamigo/
 │   ├── chat-panel.tsx       # Panel de chat (195 lineas)
 │   ├── mural-panel.tsx      # Mural comunitario (230 lineas)
 │   ├── recursos-panel.tsx   # Panel de recursos (114 lineas)
-│   └── unal-shield.tsx      # Escudo SVG (42 lineas)
+│   └── neptun-logo.tsx      # Logo SVG (42 lineas)
 │
 ├── lib/
 │   ├── data.ts              # Datos y tipos (131 lineas)

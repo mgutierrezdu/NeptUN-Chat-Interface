@@ -6,22 +6,22 @@ import './globals.css'
 
 const lora = Lora({ 
   subsets: ['latin'],
-  variable: '--font-serif',
+  variable: '--font-lora',
   display: 'swap',
 })
 
 const inter = Inter({ 
   subsets: ['latin'],
-  variable: '--font-sans',
+  variable: '--font-inter',
   display: 'swap',
 })
 
 export const metadata: Metadata = {
-  title: 'UNamigo - UNAL Sede Medellín',
+  title: 'NeptUN - UNAL Sede Medellín',
   description: 'Asistente virtual de la Universidad Nacional de Colombia, Sede Medellín. Información académica, recursos y comunidad estudiantil.',
   generator: 'v0.app',
-  keywords: ['UNAL', 'Universidad Nacional', 'Medellín', 'asistente', 'estudiantes', 'académico'],
-  authors: [{ name: 'UNamigo' }],
+  keywords: ['UNAL', 'Universidad Nacional', 'Medellín', 'asistente', 'estudiantes', 'académico', 'NeptUN'],
+  authors: [{ name: 'NeptUN' }],
   icons: {
     icon: [
       {
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#003380',
+  themeColor: '#0E1726',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
@@ -55,8 +55,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es" className={`${lora.variable} ${inter.variable} bg-[#f4f6fb]`}>
-      <body className="font-serif antialiased">
+    <html lang="es" className={`${lora.variable} ${inter.variable} bg-[#F6F8FC]`}>
+      <body className="font-sans antialiased">
         <TooltipProvider>
           {children}
         </TooltipProvider>

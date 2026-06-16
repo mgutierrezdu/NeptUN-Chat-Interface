@@ -1,8 +1,8 @@
-# UNamigo - Asistente Virtual UNAL
+# NeptUN - Asistente Virtual UNAL
 
 <div align="center">
 
-![UNamigo Logo](https://img.shields.io/badge/UNamigo-v0.1.0--beta-003380?style=for-the-badge&labelColor=FFCC00)
+![NeptUN Logo](https://img.shields.io/badge/NeptUN-v0.1.0--beta-003380?style=for-the-badge&labelColor=FFCC00)
 ![Next.js](https://img.shields.io/badge/Next.js-16.2.6-black?style=flat-square&logo=next.js)
 ![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.7.3-3178C6?style=flat-square&logo=typescript)
@@ -18,7 +18,7 @@
 
 ## Descripcion del Proyecto
 
-UNamigo es una aplicacion web progresiva (PWA) disenada para asistir a estudiantes de la Universidad Nacional de Colombia en su vida academica. Proporciona acceso rapido a recursos institucionales, un chatbot inteligente para resolver dudas y un mural comunitario para interaccion entre estudiantes.
+NeptUN es una aplicacion web progresiva (PWA) disenada para asistir a estudiantes de la Universidad Nacional de Colombia en su vida academica. Proporciona acceso rapido a recursos institucionales, un chatbot inteligente para resolver dudas y un mural comunitario para interaccion entre estudiantes.
 
 ### Capturas de Pantalla
 
@@ -123,7 +123,7 @@ unamigo/
 │   ├── chat-panel.tsx            # Panel de chat con IA
 │   ├── mural-panel.tsx           # Mural comunitario
 │   ├── recursos-panel.tsx        # Panel de recursos
-│   └── unal-shield.tsx           # Escudo UNAL (SVG)
+│   └── neptun-logo.tsx           # Logo NeptUN (SVG)
 │
 ├── lib/                          # Utilidades y datos
 │   ├── data.ts                   # Datos estaticos y tipos
@@ -151,15 +151,16 @@ unamigo/
 
 ## Paleta de Colores
 
-La aplicacion utiliza los colores institucionales de la Universidad Nacional:
+NeptUN utiliza una paleta sobria y elegante inspirada en el azul noche de Neptuno:
 
 | Color | Codigo Hex | Uso |
 |-------|------------|-----|
-| **Azul UNAL** | `#003380` | Color primario, header, botones |
-| **Dorado UNAL** | `#FFCC00` | Acentos, badges, hover states |
-| **Fondo** | `#f8fafc` | Background general |
-| **Texto** | `#0f172a` | Texto principal |
-| **Muted** | `#64748b` | Texto secundario |
+| **Azul noche** | `#0E1726` | Header, superficies oscuras, chrome |
+| **Pizarra** | `#1B2740` | Botones primarios, burbujas de usuario |
+| **Azul electrico** | `#3B82F6` | Acentos, foco, estados activos |
+| **Fondo** | `#F6F8FC` | Background general |
+| **Texto** | `#1A2233` | Texto principal |
+| **Muted** | `#5B6678` | Texto secundario |
 
 ---
 
@@ -203,7 +204,7 @@ Distribuido bajo la Licencia MIT. Ver `LICENSE` para mas informacion.
 
 ## Contacto
 
-**Proyecto UNamigo** - Universidad Nacional de Colombia
+**Proyecto NeptUN** - Universidad Nacional de Colombia
 
 Link del Proyecto: [https://github.com/mgutierrezdu/v0-unamigo-chat-interface](https://github.com/mgutierrezdu/v0-unamigo-chat-interface)
 

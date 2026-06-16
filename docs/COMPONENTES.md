@@ -1,4 +1,4 @@
-# API de Componentes - UNamigo
+# API de Componentes - NeptUN
 
 Documentacion tecnica de los componentes principales de la aplicacion.
 
@@ -9,13 +9,13 @@ Documentacion tecnica de los componentes principales de la aplicacion.
 1. [ChatPanel](#chatpanel)
 2. [RecursosPanel](#recursospanel)
 3. [MuralPanel](#muralpanel)
-4. [UNALShield](#unalshield)
+4. [NeptUNLogo](#unalshield)
 
 ---
 
 ## ChatPanel
 
-Panel de chat interactivo con el asistente virtual UNamigo.
+Panel de chat interactivo con el asistente virtual NeptUN.
 
 ### Ubicacion
 ```
@@ -310,13 +310,13 @@ export default function Page() {
 
 ---
 
-## UNALShield
+## NeptUNLogo
 
 Componente SVG del escudo de la Universidad Nacional.
 
 ### Ubicacion
 ```
-components/unal-shield.tsx
+components/neptun-logo.tsx
 ```
 
 ### Props
@@ -330,16 +330,16 @@ components/unal-shield.tsx
 ### Uso
 
 ```tsx
-import { UNALShield } from "@/components/unal-shield"
+import { NeptUNLogo } from "@/components/neptun-logo"
 
 // Uso basico
-<UNALShield />
+<NeptUNLogo />
 
 // Con tamano personalizado
-<UNALShield width={60} height={60} />
+<NeptUNLogo width={60} height={60} />
 
 // Con clases adicionales
-<UNALShield className="drop-shadow-lg" />
+<NeptUNLogo className="drop-shadow-lg" />
 ```
 
 ### Colores

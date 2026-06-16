@@ -164,14 +164,6 @@ NeptUN utiliza una paleta sobria y elegante inspirada en el azul noche de Neptun
 
 ---
 
-## Desarrollo con v0
-
-Este repositorio esta vinculado a un proyecto de [v0](https://v0.app). Puedes continuar el desarrollo visitando el enlace de abajo. Cada merge a `main` se despliega automaticamente.
-
-[Continuar trabajando en v0](https://v0.app/chat/projects/prj_ABreVnped1mWeoAXIdSLUe7GfSCy)
-
----
-
 ## Roadmap
 
 - [ ] Integracion con API de IA (OpenAI/Anthropic)

@@ -1,4 +1,4 @@
-// UNamigo Data Constants
+// NeptUN Data Constants
 
 export const RECURSOS = [
   { icon: "🎓", label: "SIA", desc: "Sistema de Información Académica", url: "https://sia.unal.edu.co", cat: "Académico", bg: "#e8f0fe", border: "#3b5fc0", tx: "#1a3a8f" },

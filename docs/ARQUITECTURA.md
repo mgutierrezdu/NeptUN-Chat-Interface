@@ -1,12 +1,12 @@
-# Arquitectura - UNamigo
+# Arquitectura - NeptUN
 
-Este documento describe la arquitectura tecnica de la aplicacion UNamigo.
+Este documento describe la arquitectura tecnica de la aplicacion NeptUN.
 
 ---
 
 ## Vision General
 
-UNamigo sigue una arquitectura modular basada en componentes, utilizando el App Router de Next.js 16 con React 19.
+NeptUN sigue una arquitectura modular basada en componentes, utilizando el App Router de Next.js 16 con React 19.
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐

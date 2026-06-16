@@ -1,6 +1,6 @@
-# Guia de Contribucion - UNamigo
+# Guia de Contribucion - NeptUN
 
-Gracias por tu interes en contribuir a UNamigo. Este documento te guiara a traves del proceso de contribucion.
+Gracias por tu interes en contribuir a NeptUN. Este documento te guiara a traves del proceso de contribucion.
 
 ---
 
@@ -407,4 +407,4 @@ Si tienes preguntas sobre el proceso de contribucion:
 
 ---
 
-Gracias por contribuir a UNamigo y ayudar a mejorar la experiencia de los estudiantes de la Universidad Nacional.
+Gracias por contribuir a NeptUN y ayudar a mejorar la experiencia de los estudiantes de la Universidad Nacional.

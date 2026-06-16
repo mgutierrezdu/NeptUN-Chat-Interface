@@ -4,7 +4,6 @@ import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { ScrollArea } from "@/components/ui/scroll-area"
 import { Badge } from "@/components/ui/badge"
 import { BOT_RESPONSES, DEFAULT_RESP, CHIPS } from "@/lib/data"
 import { Send, Bot, User } from "lucide-react"
@@ -20,7 +19,7 @@ export function ChatPanel() {
     {
       id: 1,
       role: "bot",
-      text: "¡Hola! Soy UNamigo, tu asistente virtual de la Universidad Nacional de Colombia, Sede Medellín. Puedo ayudarte con preguntas sobre el reglamento estudiantil, trámites, fechas y más. ¿En qué te puedo ayudar hoy?",
+      text: "¡Hola! Soy NeptUN, tu asistente virtual de la Universidad Nacional de Colombia, Sede Medellín. Puedo ayudarte con preguntas sobre el reglamento estudiantil, trámites, fechas y más. ¿En qué te puedo ayudar hoy?",
     },
   ])
   const [input, setInput] = useState("")
@@ -31,7 +30,7 @@ export function ChatPanel() {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight
     }
-  }, [messages])
+  }, [messages, isTyping])
 
   const sendMessage = (text?: string) => {
     const messageText = text || input.trim()
@@ -76,27 +75,29 @@ export function ChatPanel() {
   }
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex h-full min-h-0 flex-col bg-[#F6F8FC]">
       {/* Chat Header */}
-      <div className="flex shrink-0 items-center gap-3 border-b-2 border-[#001f52] bg-[#003380] px-5 py-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#FFCC00] text-xl">
-          <Bot className="h-5 w-5 text-[#001f52]" />
+      <div className="flex shrink-0 items-center gap-3 border-b border-[#1F2C44] bg-[#131C2E] px-5 py-3">
+        <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#3B82F6]/40 bg-[#3B82F6]/15">
+          <Bot className="h-5 w-5 text-[#93C5FD]" />
         </div>
         <div className="flex-1">
-          <div className="font-bold text-white">UNamigo</div>
-          <div className="text-xs text-[#adc4f0]">Asistente virtual UNAL - RAG sobre documentos institucionales</div>
+          <div className="font-semibold text-[#F1F5FB]">NeptUN</div>
+          <div className="text-xs text-[#8A99B5]">Asistente virtual UNAL · RAG sobre documentos institucionales</div>
         </div>
-        <Badge className="border-green-500 bg-green-500/10 text-green-500">En línea</Badge>
+        <Badge className="border border-emerald-500/40 bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/10">
+          En línea
+        </Badge>
       </div>
 
       {/* Demo Notice */}
-      <div className="mx-4 mt-3 shrink-0 rounded-lg border border-dashed border-[#c9a000] bg-[#fff8dc] px-4 py-2 text-sm text-[#7a5900]">
-        <strong>Modo demostración:</strong> UNamigo está en construcción. El módulo RAG será integrado con los
-        documentos oficiales de la UNAL en la próxima fase.
+      <div className="mx-4 mt-3 shrink-0 rounded-lg border border-[#3B82F6]/30 bg-[#3B82F6]/10 px-4 py-2 text-sm text-[#33507f]">
+        <strong className="font-semibold">Modo demostración:</strong> NeptUN está en construcción. El módulo RAG será
+        integrado con los documentos oficiales de la UNAL en la próxima fase.
       </div>
 
-      {/* Messages */}
-      <ScrollArea ref={scrollRef} className="flex-1 p-4">
+      {/* Messages — flex child with min-h-0 so it scrolls independently and keeps the input fixed */}
+      <div ref={scrollRef} className="min-h-0 flex-1 overflow-y-auto p-4">
         <div className="flex flex-col gap-3">
           <AnimatePresence initial={false}>
             {messages.map((msg) => (
@@ -108,15 +109,15 @@ export function ChatPanel() {
                 transition={{ duration: 0.2 }}
                 className={`flex flex-col ${msg.role === "user" ? "items-end" : "items-start"}`}
               >
-                <div className="mb-1 flex items-center gap-2 text-xs text-muted-foreground">
+                <div className="mb-1 flex items-center gap-2 text-xs text-[#8A99B5]">
                   {msg.role === "bot" ? <Bot className="h-3 w-3" /> : <User className="h-3 w-3" />}
-                  {msg.role === "bot" ? "UNamigo" : "Tú"} - ahora
+                  {msg.role === "bot" ? "NeptUN" : "Tú"} · ahora
                 </div>
                 <div
                   className={`max-w-[75%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
                     msg.role === "user"
-                      ? "rounded-br-sm bg-[#003380] text-white"
-                      : "rounded-bl-sm border border-[#dde3ef] bg-white text-[#1a2340] shadow-sm"
+                      ? "rounded-br-sm bg-[#1B2740] text-[#F1F5FB]"
+                      : "rounded-bl-sm border border-[#E3E8F2] bg-white text-[#1A2233] shadow-sm"
                   }`}
                 >
                   {msg.text}
@@ -126,48 +127,44 @@ export function ChatPanel() {
           </AnimatePresence>
 
           {isTyping && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="flex items-start gap-2"
-            >
-              <div className="rounded-2xl rounded-bl-sm border border-[#dde3ef] bg-white px-4 py-3 shadow-sm">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-start gap-2">
+              <div className="rounded-2xl rounded-bl-sm border border-[#E3E8F2] bg-white px-4 py-3 shadow-sm">
                 <div className="flex gap-1">
                   <motion.span
                     animate={{ opacity: [0.4, 1, 0.4] }}
                     transition={{ duration: 1, repeat: Infinity }}
-                    className="h-2 w-2 rounded-full bg-[#003380]"
+                    className="h-2 w-2 rounded-full bg-[#3B82F6]"
                   />
                   <motion.span
                     animate={{ opacity: [0.4, 1, 0.4] }}
                     transition={{ duration: 1, repeat: Infinity, delay: 0.2 }}
-                    className="h-2 w-2 rounded-full bg-[#003380]"
+                    className="h-2 w-2 rounded-full bg-[#3B82F6]"
                   />
                   <motion.span
                     animate={{ opacity: [0.4, 1, 0.4] }}
                     transition={{ duration: 1, repeat: Infinity, delay: 0.4 }}
-                    className="h-2 w-2 rounded-full bg-[#003380]"
+                    className="h-2 w-2 rounded-full bg-[#3B82F6]"
                   />
                 </div>
               </div>
             </motion.div>
           )}
         </div>
-      </ScrollArea>
+      </div>
 
-      {/* Input Area - Siempre visible (fijo en la parte inferior) */}
-      <div className="shrink-0 border-t-2 border-[#dde3ef] bg-white p-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+      {/* Input Area — siempre visible y fijo en la parte inferior */}
+      <div className="shrink-0 border-t border-[#E3E8F2] bg-white p-4 shadow-[0_-4px_12px_-6px_rgba(14,23,38,0.15)]">
         <div className="flex gap-3">
           <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Escribe tu pregunta sobre la UNAL..."
-            className="flex-1 rounded-full border-[#dde3ef] px-4 focus-visible:ring-[#003380]"
+            className="flex-1 rounded-full border-[#E3E8F2] px-4 focus-visible:ring-[#3B82F6]"
           />
           <Button
             onClick={() => sendMessage()}
-            className="rounded-full bg-[#003380] px-6 font-bold hover:bg-[#001f52]"
+            className="rounded-full bg-[#1B2740] px-6 font-semibold text-[#F1F5FB] hover:bg-[#0E1726]"
           >
             <Send className="mr-2 h-4 w-4" />
             Enviar
@@ -182,7 +179,7 @@ export function ChatPanel() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => sendMessage(chip)}
-              className="rounded-full border border-[#dde3ef] bg-[#e8eef8] px-3 py-1.5 text-xs text-[#003380] transition-colors hover:bg-[#d0daf5]"
+              className="rounded-full border border-[#E3E8F2] bg-[#EEF3FB] px-3 py-1.5 text-xs text-[#33507f] transition-colors hover:border-[#3B82F6]/40 hover:bg-[#E0E9F8]"
             >
               {chip}
             </motion.button>
